@@ -24,6 +24,10 @@ regions_to_exclude = [
 ]
 parcoursup_but = parcoursup_but[~parcoursup_but['Région de l’établissement'].isin(regions_to_exclude)]
 
+# Median standard of living data recovery and merge
+median_standard_of_living = pd.read_csv('datasets/median_standard_of_living_but.csv', sep = ';')
+parcoursup_but = pd.merge(median_standard_of_living, parcoursup_but, on="Commune de l’établissement")
+
 # https://dataesr.fr/fichiers/tableaux_synthese_DUT_22.pdf
 
 salaries = {
